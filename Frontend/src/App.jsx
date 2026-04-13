@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import WhyChoose from './components/WhyChoose'
+import PlatformSection from './components/PlatfromSection'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       </section>
       <section id="why-us">
         <WhyChoose />
+        <PlatformSection/>
       </section>
       {/* Add a placeholder for contact if needed */}
       <section id="contact" className="py-20 bg-slate-900 text-white text-center">
