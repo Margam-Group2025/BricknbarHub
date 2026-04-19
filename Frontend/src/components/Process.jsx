@@ -1,29 +1,35 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const PROCESS_STEPS = [
+const ORDER_PROCESS = [
   {
     num: "01",
-    title: "Discovery & Planning",
-    desc: "We begin with a deep dive into your vision, site analysis, and budget planning to create a rock-solid project roadmap.",
-    img: "https://images.unsplash.com/photo-1503387762-592dee58c460?q=80&w=1000"
+    title: "Smart Product Selection",
+    desc: "Browse through our verified inventory of high-grade TMT bars, cement, and construction essentials. Compare prices and specifications in real-time.",
+    img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000"
   },
   {
     num: "02",
-    title: "Architectural Mapping",
-    desc: "Our visionary designers create 2D/3D layouts ensuring optimal space utilization, ventilation, and modern aesthetics.",
-    img: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1000"
+    title: "Instant Quotation & Order",
+    desc: "Get transparent, bulk-order pricing with no hidden costs. Place your order through our secure gateway with flexible payment options.",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000"
   },
   {
     num: "03",
-    title: "Precision Engineering",
-    desc: "From advanced waterproofing to RustGuard TMT selection, our engineering team ensures structural longevity.",
-    img: "https://images.unsplash.com/photo-1541971875076-8f970d573be6?q=80&w=1000"
+    title: "Quality Check & Loading",
+    desc: "Every item undergoes a strict 3-point quality inspection at our warehouse before being loaded onto our heavy-duty logistics fleet.",
+    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000"
   },
   {
     num: "04",
-    title: "Smart Construction",
-    desc: "Experience real-time updates through our platform as our expert contractors bring the blueprint to life with 5X supervision.",
+    title: "Real-Time GPS Tracking",
+    desc: "Stay updated with live tracking. Know exactly where your construction material is and get precise ETAs for site arrival.",
+    img: "https://img.freepik.com/premium-photo/realtime-delivery-tracking-technology-concept-with-moving-vehicle-icon-smartphone-map-interface_416256-80136.jpg?w=360"
+  },
+  {
+    num: "05",
+    title: "On-Site Delivery & Unloading",
+    desc: "Our professional team ensures safe unloading at your project site, providing digital invoices and material test certificates on the spot.",
     img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000"
   }
 ];
@@ -39,10 +45,9 @@ const FadeIn = ({ children }) => (
   </motion.div>
 );
 
-export default function ProcessSection() {
+export default function OrderDeliveryProcess() {
   const containerRef = useRef(null);
   
-  // Tracking scroll progress for the vertical line
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -51,73 +56,80 @@ export default function ProcessSection() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section ref={containerRef} id="process" className="py-24 md:py-32 bg-white relative">
-      <div className="max-w-400 mx-auto px-6 md:px-12 lg:px-24">
+    <section ref={containerRef} id="order-process" className="py-24 md:py-32 bg-white relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
-          {/* Left Side: Sticky Content */}
-          <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
+          {/* Left Side: Sticky Header */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
             <FadeIn>
-              <span className="text-orange-600 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
-                The Roadmap
-              </span>
-              <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl text-slate-900 font-bold leading-tight mb-6">
-                A Structured Path <br /> To Perfection.
-              </h3>
-              <p className="text-slate-500 text-lg font-light leading-relaxed">
-                We've refined our workflow to eliminate surprises and ensure a 
-                seamless journey from the first sketch to the final handover.
-              </p>
-              
-              {/* Decorative Element */}
-              <div className="mt-10 hidden lg:block">
-                <div className="w-12 h-1 bg-orange-600 rounded-full" />
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-[2px] bg-orange-600" />
+                <span className="text-orange-600 text-sm font-bold tracking-widest uppercase">
+                  Seamless Logistics
+                </span>
               </div>
+              <h3 className="text-5xl md:text-6xl font-black text-black leading-[1.1] mb-8">
+                From Warehouse <br /> 
+                <span className="text-orange-600">To Your Site.</span>
+              </h3>
+              <p className="text-slate-600 text-xl font-light leading-relaxed max-w-md">
+                Humne construction material ki delivery ko fast, transparent aur reliable banaya hai. Track karein har step par.
+              </p>
+              <motion.a
+                href="https://bricknbar.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-10 inline-block px-8 py-4 bg-black text-white font-bold hover:bg-orange-600 transition-colors duration-300 rounded-sm text-center"
+             >
+               Start Your Order
+              </motion.a>
             </FadeIn>
           </div>
 
-          {/* Right Side: Timeline Steps */}
-          <div className="lg:col-span-7 lg:col-start-6 relative">
+          {/* Right Side: Delivery Steps */}
+          <div className="lg:col-span-6 lg:col-start-7 relative">
             
-            {/* Background Grey Line */}
-            <div className="absolute left-6.75 top-0 bottom-0 w-0.5 bg-slate-100 hidden md:block" />
+            {/* Timeline Line (Background) */}
+            <div className="absolute left-7 top-0 bottom-0 w-[1px] bg-slate-200 hidden md:block" />
 
-            {/* Dynamic Orange Animated Line */}
+            {/* Animated Orange Line */}
             <motion.div
               style={{ scaleY, transformOrigin: "top" }}
-              className="absolute left-6.75 top-0 bottom-0 w-0.5 bg-orange-600 hidden md:block z-10"
+              className="absolute left-7 top-0 bottom-0 w-[2px] bg-orange-600 hidden md:block z-10"
             />
 
-            <div className="space-y-32">
-              {PROCESS_STEPS.map((step, index) => (
-                <div key={index} className="relative flex flex-col md:flex-row gap-8 md:gap-16 group">
+            <div className="space-y-24">
+              {ORDER_PROCESS.map((step, index) => (
+                <div key={index} className="relative flex flex-col md:flex-row gap-8 md:gap-12 group">
 
-                  {/* Circle Indicator */}
-                  <div className="relative z-20 shrink-0 w-14 h-14 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center group-hover:border-orange-600 group-hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-all duration-500">
-                    <span className="font-heading text-xl font-bold text-slate-400 group-hover:text-orange-600 transition-colors duration-500">
+                  {/* Step Marker */}
+                  <div className="relative z-20 shrink-0 w-14 h-14 bg-black flex items-center justify-center group-hover:bg-orange-600 transition-colors duration-500 shadow-xl">
+                    <span className="text-white font-bold text-lg">
                       {step.num}
                     </span>
                   </div>
 
-                  {/* Step Content */}
-                  <div className="grow pt-2">
+                  {/* Content Card */}
+                  <div className="grow">
                     <FadeIn>
-                      <h4 className="text-2xl md:text-3xl font-heading font-bold text-slate-900 mb-4 group-hover:text-orange-600 transition-colors">
+                      <h4 className="text-2xl font-bold text-black mb-3 group-hover:text-orange-600 transition-colors">
                         {step.title}
                       </h4>
-                      <p className="text-slate-500 text-lg font-light leading-relaxed mb-8 max-w-xl">
+                      <p className="text-slate-500 text-lg leading-relaxed mb-6">
                         {step.desc}
                       </p>
                       
-                      {/* Image Card */}
-                      <div className="group relative h-72 md:h-80 w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                      {/* Image with Black & White to Color effect */}
+                      <div className="relative h-64 w-full overflow-hidden bg-slate-100 rounded-sm border-b-4 border-black group-hover:border-orange-600 transition-all duration-500">
                         <img
                           src={step.img}
                           alt={step.title}
-                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-50 group-hover:grayscale-0"
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                         />
-                        {/* Subtle Overlay */}
-                        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                       </div>
                     </FadeIn>
                   </div>
