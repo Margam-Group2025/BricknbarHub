@@ -64,7 +64,7 @@ export default function OrderDeliveryProcess() {
           <div className="lg:col-span-5 lg:sticky lg:top-32 h-fit">
             <FadeIn>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-[2px] bg-orange-600" />
+                <div className="w-10 h-0.5 bg-orange-600" />
                 <span className="text-orange-600 text-sm font-bold tracking-widest uppercase">
                   Seamless Logistics
                 </span>
@@ -74,7 +74,7 @@ export default function OrderDeliveryProcess() {
                 <span className="text-orange-600">To Your Site.</span>
               </h3>
               <p className="text-slate-600 text-xl font-light leading-relaxed max-w-md">
-                Humne construction material ki delivery ko fast, transparent aur reliable banaya hai. Track karein har step par.
+                We have made construction material delivery fast, transparent, and reliable. Track your order every step of the way.
               </p>
               <motion.a
                 href="https://bricknbar.com"
@@ -93,12 +93,12 @@ export default function OrderDeliveryProcess() {
           <div className="lg:col-span-6 lg:col-start-7 relative">
             
             {/* Timeline Line (Background) */}
-            <div className="absolute left-7 top-0 bottom-0 w-[1px] bg-slate-200 hidden md:block" />
+            <div className="absolute left-7 top-0 bottom-0 w-px bg-slate-200 hidden md:block" />
 
             {/* Animated Orange Line */}
             <motion.div
               style={{ scaleY, transformOrigin: "top" }}
-              className="absolute left-7 top-0 bottom-0 w-[2px] bg-orange-600 hidden md:block z-10"
+              className="absolute left-7 top-0 bottom-0 w-0.5 bg-orange-600 hidden md:block z-10"
             />
 
             <div className="space-y-24">
@@ -115,21 +115,20 @@ export default function OrderDeliveryProcess() {
                   {/* Content Card */}
                   <div className="grow">
                     <FadeIn>
-                      <h4 className="text-2xl font-bold text-black mb-3 group-hover:text-orange-600 transition-colors">
+                      <h4 className="text-2xl font-bold text-orange-600 mb-3 transition-colors">
                         {step.title}
                       </h4>
                       <p className="text-slate-500 text-lg leading-relaxed mb-6">
                         {step.desc}
                       </p>
-                      
-                      {/* Image with Black & White to Color effect */}
-                      <div className="relative h-64 w-full overflow-hidden bg-slate-100 rounded-sm border-b-4 border-black group-hover:border-orange-600 transition-all duration-500">
-                        <img
-                          src={step.img}
-                          alt={step.title}
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                        />
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+
+                      <div className="relative h-64 w-full overflow-hidden bg-slate-100 rounded-sm border-b-4 border-orange-600 transition-all duration-500">
+                     <img
+                       src={step.img}
+                       alt={step.title}
+                      className="w-full h-full object-cover transition-all duration-700 scale-105 group-hover:scale-100"
+                     />
+                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                       </div>
                     </FadeIn>
                   </div>

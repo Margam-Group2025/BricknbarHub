@@ -3,8 +3,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Smartphone, Globe } from 'lucide-react';
 
 // Replace with your actual app mockups or high-quality dashboard images
-const APP_MOCKUP_1 = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop";
-const APP_MOCKUP_2 = "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format&fit=crop";
+const APP_MOCKUP_1 = "/images/web.png";
+const APP_MOCKUP_2 = "/images/android.jpeg";
 
 const FadeIn = ({ children, delay = 0 }) => (
   <motion.div
@@ -68,17 +68,36 @@ export default function PlatformSection() {
           <div className="lg:col-span-7 flex flex-col items-center">
             
             {/* Parallax Image Container */}
-            <div className="relative h-125 md:h-150 w-full flex gap-4 md:gap-8 justify-center items-center mb-12">
-              <motion.div style={{ y: y1 }} className="w-1/2 h-[85%] relative rounded-2xl overflow-hidden shadow-2xl border border-white/50">
-                <img src={APP_MOCKUP_1} alt="App Dashboard" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
-              </motion.div>
-              
-              <motion.div style={{ y: y2 }} className="w-1/2 h-[95%] relative rounded-2xl overflow-hidden shadow-2xl border border-white/50 mt-12">
-                <img src={APP_MOCKUP_2} alt="Order Tracking" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
-              </motion.div>
-            </div>
+            <div className="relative h-125 md:h-160 w-full flex flex-row gap-6 md:gap-12 justify-center items-end mb-12 px-4">
+  
+  {/* WEB MOCKUP: Isse thoda bada aur wide rakha gaya hai */}
+  <motion.div 
+    style={{ y: y1 }} 
+    className="w-3/5 h-[80%] relative rounded-xl overflow-hidden shadow-2xl border-4 border-gray-800 bg-white"
+  >
+    {/* Browser top bar effect for web */}
+    <div className="h-6 bg-gray-200 w-full flex items-center gap-1 px-2 border-b border-gray-300">
+      <div className="w-2 h-2 rounded-full bg-red-400"></div>
+      <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+      <div className="w-2 h-2 rounded-full bg-green-400"></div>
+    </div>
+    <img src={APP_MOCKUP_1} alt="Web Platform Dashboard" className="w-full h-full object-top object-cover" />
+    <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+  </motion.div>
+  
+  {/* MOBILE MOCKUP: Isse patla (narrow) aur uncha rakha gaya hai */}
+  <motion.div 
+    style={{ y: y2 }} 
+    className="w-[28%] aspect-9/19 max-h-[95%] relative rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-black bg-black mb-[-20px] z-10"
+  >
+    {/* Mobile Notch effect */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-b-2xl z-20" />
+    
+    <img src={APP_MOCKUP_2} alt="Mobile App View" className="w-full h-full object-cover" />
+    <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
+  </motion.div>
+
+</div>
 
             {/* Platform Download Buttons */}
             <FadeIn delay={0.4}>
@@ -86,7 +105,7 @@ export default function PlatformSection() {
                 
                 {/* Android / Mobile Button */}
                 <a 
-                  href="https://play.google.com/store" 
+                  href="https://play.google.com/store/apps/details?id=com.bricknbarapp&pcampaignid=web_share" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 bg-slate-900 text-white px-8 py-4 rounded-xl hover:bg-orange-600 transition-all duration-300 shadow-xl"

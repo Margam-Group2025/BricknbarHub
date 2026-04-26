@@ -8,6 +8,8 @@ import WhyChoose from './components/WhyChoose'
 import PlatformSection from './components/PlatfromSection'
 import Process from './components/Process'
 import BrandSection from './components/BrandSection'
+import Footer from './components/Footer'
+import Contact from './components/Contact'
 
 function App() {
   return (
@@ -28,8 +30,9 @@ function App() {
         <PlatformSection/>
         <BrandSection/>
         <Process/>
-        
+        <Contact />
       </section>
+      
       {/* Add a placeholder for contact if needed */}
       <section id="contact" className="py-20 bg-slate-900 text-white text-center">
       <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-24 relative z-10">
@@ -44,6 +47,7 @@ function App() {
         </a>
       </div>
     </section>
+    <Footer/>
     </main>
   )
 }
