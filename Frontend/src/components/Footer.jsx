@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  
   Mail, 
   Phone, 
   MapPin, 
@@ -11,11 +10,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About Us', href: '#about' },
+     { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
-    { label: 'Order Process', href: '#process' },
-    { label: 'Privacy Policy', href: '#privacy' },
+    { label: 'Process', href: '#order-process' },
+    { label: 'Our Platform', href: '#our-platform' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   const services = [

@@ -30,7 +30,7 @@ export default function PlatformSection() {
   const y2 = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   return (
-    <section ref={containerRef} id="platform" className="py-24 md:py-32 w-full bg-slate-50 relative overflow-hidden">
+    <section ref={containerRef} id="our-platform" className="py-24 md:py-32 w-full bg-slate-50 relative overflow-hidden">
       <div className="max-w-400 mx-auto px-6 md:px-12 lg:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
@@ -70,34 +70,32 @@ export default function PlatformSection() {
             {/* Parallax Image Container */}
             <div className="relative h-125 md:h-160 w-full flex flex-row gap-6 md:gap-12 justify-center items-end mb-12 px-4">
   
-  {/* WEB MOCKUP: Isse thoda bada aur wide rakha gaya hai */}
-  <motion.div 
-    style={{ y: y1 }} 
-    className="w-3/5 h-[80%] relative rounded-xl overflow-hidden shadow-2xl border-4 border-gray-800 bg-white"
-  >
-    {/* Browser top bar effect for web */}
-    <div className="h-6 bg-gray-200 w-full flex items-center gap-1 px-2 border-b border-gray-300">
-      <div className="w-2 h-2 rounded-full bg-red-400"></div>
-      <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-      <div className="w-2 h-2 rounded-full bg-green-400"></div>
-    </div>
-    <img src={APP_MOCKUP_1} alt="Web Platform Dashboard" className="w-full h-full object-top object-cover" />
-    <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
-  </motion.div>
+           <motion.div 
+            style={{ y: y1 }} 
+            className="w-3/5 h-[80%] relative rounded-xl overflow-hidden shadow-2xl border-4 border-gray-800 bg-white"
+            >
+             <div className="h-6 bg-gray-200 w-full flex items-center gap-1 px-2 border-b border-gray-300">
+            <div className="w-2 h-2 rounded-full bg-red-400"></div>
+             <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+             <div className="w-2 h-2 rounded-full bg-green-400"></div>
+            </div>
+           <img src={APP_MOCKUP_1} alt="Web Platform Dashboard" className="w-full h-full object-top object-cover" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+           </motion.div>
   
-  {/* MOBILE MOCKUP: Isse patla (narrow) aur uncha rakha gaya hai */}
-  <motion.div 
-    style={{ y: y2 }} 
-    className="w-[28%] aspect-9/19 max-h-[95%] relative rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-black bg-black mb-[-20px] z-10"
-  >
-    {/* Mobile Notch effect */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-b-2xl z-20" />
+          {/* MOBILE MOCKUP */}
+           <motion.div 
+             style={{ y: y2 }} 
+             className="w-[28%] aspect-9/19 max-h-[95%] relative rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] border-black bg-black -mb-5 z-10"
+             >
+        {/* Mobile Notch effect */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-b-2xl z-20" />
     
-    <img src={APP_MOCKUP_2} alt="Mobile App View" className="w-full h-full object-cover" />
-    <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
-  </motion.div>
+          <img src={APP_MOCKUP_2} alt="Mobile App View" className="w-full h-full object-cover" />
+           <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
+          </motion.div>
 
-</div>
+          </div>
 
             {/* Platform Download Buttons */}
             <FadeIn delay={0.4}>

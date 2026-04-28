@@ -15,7 +15,6 @@ function App() {
   return (
     <main className="bg-white">
       <Header />
-      {/* Each component needs an ID that matches your Header links */}
       <section id="home">
         <Hero />
       </section>
@@ -29,11 +28,10 @@ function App() {
         <WhyChoose />
         <PlatformSection/>
         <BrandSection/>
-        <Process/>
+        <Process id="process"/>
         <Contact />
       </section>
       
-      {/* Add a placeholder for contact if needed */}
       <section id="contact" className="py-20 bg-slate-900 text-white text-center">
       <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold">

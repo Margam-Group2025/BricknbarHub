@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const ALL_BRANDS = [
@@ -14,57 +14,74 @@ const ALL_BRANDS = [
 ];
 
 export default function TrustedBrandsSection() {
+  const [radius, setRadius] = useState(280);
+
+  // Update radius based on screen size safely
+  useEffect(() => {
+    const updateRadius = () => {
+      if (window.innerWidth < 640) setRadius(130); // Small Mobile
+      else if (window.innerWidth < 1024) setRadius(200); // Tablet
+      else setRadius(280); // Desktop
+    };
+    
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, []);
+
   return (
-    <section id="partners" className="py-24 md:py-32 bg-slate-50 overflow-hidden">
-      <div className="max-w-400 mx-auto px-6 md:px-12 lg:px-24">
+    <section id="partners" className="py-20 md:py-32 bg-slate-50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Side: Content */}
-          <div className="lg:col-span-5 z-10">
+          <div className="lg:col-span-5 z-20 text-center lg:text-left">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
-              <span className="text-orange-600 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
+              <span className="text-orange-600 text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-4 block">
                 The BricknBar Network
               </span>
-              <h2 className="text-4xl md:text-6xl font-bold text-slate-900 leading-[1.1] mb-8">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
                 Build with <br />
                 <span className="text-orange-600">Legendary Brands.</span>
               </h2>
-              <p className="text-slate-600 text-lg font-light leading-relaxed mb-10 max-w-md">
-                  We believe a strong home starts with premium ingredients. BricknBar partners with India's most trusted manufacturers to ensure your peace of mind.
+              <p className="text-slate-600 text-base md:text-lg font-light leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+                We believe a strong home starts with premium ingredients. BricknBar partners with India's most trusted manufacturers.
               </p>
 
-              <div className="flex items-center gap-6">
-                 <button className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg">
-                   Explore All 55+ Brands
-                 </button>
-              </div>
+              <button className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg active:scale-95">
+                Explore All 55+ Brands
+              </button>
             </motion.div>
           </div>
 
           {/* Right Side: Orbital Brand Hub */}
-          <div className="lg:col-span-7 relative flex justify-center items-center h-125 md:h-175">
+          <div className="lg:col-span-7 relative flex justify-center items-center h-100 md:h-150 lg:h-175">
             
-            {/* Center Core (BricknBar Logo placeholder) */}
-            <div className="absolute w-32 h-32 md:w-48 md:h-48 rounded-full bg-white shadow-2xl z-20 flex items-center justify-center border-4 border-orange-50">
-               <span className="text-orange-600 font-bold text-xl md:text-2xl text-center">BricknBar <br/> Hub</span>
-            </div>
+            {/* Center Core */}
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              className="absolute w-28 h-28 md:w-44 md:h-44 rounded-full bg-white shadow-2xl z-20 flex items-center justify-center border-4 border-orange-100 p-4"
+            >
+              <span className="text-orange-600 font-bold text-sm md:text-xl text-center leading-tight">
+                BricknBar <br/> Hub
+              </span>
+            </motion.div>
 
-            {/* Orbit Lines (Design Visual) */}
-            <div className="absolute w-75 h-75 md:w-125 md:h-125 border border-slate-200 rounded-full animate-pulse" />
-            <div className="absolute w-112.5 h-112.5 md:w-162.5 md:h-162.5 border border-slate-100 rounded-full" />
+            {/* Orbit Decorative Rings */}
+            <div className="absolute w-60 h-60 md:w-112.5 md:h-112.5 border border-slate-200 rounded-full animate-[spin_20s_linear_infinite] opacity-50" />
+            <div className="absolute w-[320px] h-80 md:w-150 md:h-150 border border-slate-100 rounded-full hidden md:block" />
 
             {/* Brand Orbs */}
-            <div className="relative w-full h-full">
+            <div className="relative w-full h-full flex items-center justify-center">
               {ALL_BRANDS.map((brand, index) => {
-                // Circular Math for positioning
                 const angle = (index * (360 / ALL_BRANDS.length)) * (Math.PI / 180);
-                const radius = window.innerWidth < 768 ? 160 : 280; // Distance from center
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
@@ -74,8 +91,11 @@ export default function TrustedBrandsSection() {
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    whileHover={{ scale: 1.2, zIndex: 50 }}
+                    transition={{ 
+                      delay: index * 0.05, 
+                      type: "spring", 
+                      stiffness: 100 
+                    }}
                     style={{
                       position: 'absolute',
                       left: `calc(50% + ${x}px)`,
@@ -84,22 +104,33 @@ export default function TrustedBrandsSection() {
                     }}
                     className="group"
                   >
-                    <div className="w-16 h-16 md:w-28 md:h-28 rounded-full bg-white shadow-xl flex items-center justify-center p-4 md:p-6 border border-slate-50 transition-all group-hover:border-orange-200 cursor-pointer">
+                    <motion.div 
+                      animate={{ 
+                        y: [0, -10, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: index * 0.2,
+                        ease: "easeInOut"
+                      }}
+                      className="w-14 h-14 md:w-24 md:h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-3 md:p-5 border border-slate-100 transition-all group-hover:border-orange-400 group-hover:shadow-orange-100 cursor-pointer"
+                    >
                       <img 
                         src={brand.logo} 
                         alt={brand.name} 
                         className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300" 
                       />
-                    </div>
+                    </motion.div>
+                    
                     {/* Tooltip name */}
-                    <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] md:text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-30">
                       {brand.name}
                     </span>
                   </motion.div>
                 );
               })}
             </div>
-
           </div>
 
         </div>
